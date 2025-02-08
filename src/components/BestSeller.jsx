@@ -8,7 +8,7 @@ const BestSeller = () => {
 	const { products } = useContext(ShopContext);
 
 	useEffect(() => {
-		const bestProduct = products.filter((item) => item.bestSeller);
+		const bestProduct = products.filter((item) => item.bestseller); // bestseller is the filter here for bestProducts
 		setBestSeller(bestProduct.slice(0, 5));
 	}, [products]);
 
@@ -35,6 +35,7 @@ const BestSeller = () => {
 
          Passing Props to ProductItem Each ProductItem component receives the following props:key,id,image,name,price
          */}
+
 			<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6">
 				{bestSeller.map((item, index) => (
 					<ProductItem

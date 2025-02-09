@@ -20,7 +20,7 @@ const NewsletterBox = () => {
 					required
 				/>
 				<button
-					className="bg-black text-white text-xs px-10 py-4"
+					className="bg-black text-white text-xs px-10 py-4 cursor-pointer"
 					type="submit"
 				>
 					SUBSCRIBE

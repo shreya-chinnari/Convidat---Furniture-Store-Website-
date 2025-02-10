@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
 import { ShopContext } from "../context/ShopContext";
-import PropTypes from "prop-types";
+
 import { Link } from "react-router-dom";
 
 const ProductItem = ({ id, image, name, price }) => {
-
 	// from the props
 
 	const { currency } = useContext(ShopContext); // from ShopContext
@@ -18,7 +17,7 @@ const ProductItem = ({ id, image, name, price }) => {
 			>
 				<div className="hover:font-bold relative overflow-hidden">
 					<img
-						src={image[0]}
+						src={image}
 						alt=""
 						className="relative h-48 w-48 sm:h-60 sm:w-60 md:h-72 md:w-72 object-contain  transition-transform duration-300 ease-in-out hover:scale-105 "
 					/>
@@ -35,12 +34,6 @@ const ProductItem = ({ id, image, name, price }) => {
 	);
 };
 
-// Prop Validation
-ProductItem.propTypes = {
-	id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired, // id should be a string or number
-	image: PropTypes.arrayOf(PropTypes.string).isRequired, // image should be an array of strings
-	name: PropTypes.string.isRequired, // name should be a string
-	price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired, // price can be a number or a string
-};
+
 
 export default ProductItem;

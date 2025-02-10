@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import { ShopContext } from "../context/ShopContext";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const ProductItem = ({ id, image, name, price }) => {
+
 	// from the props
 
 	const { currency } = useContext(ShopContext); // from ShopContext
@@ -31,6 +33,14 @@ const ProductItem = ({ id, image, name, price }) => {
 			{/* on clicking on this link it will redirect to the product id  */}
 		</>
 	);
+};
+
+// Prop Validation
+ProductItem.propTypes = {
+	id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired, // id should be a string or number
+	image: PropTypes.arrayOf(PropTypes.string).isRequired, // image should be an array of strings
+	name: PropTypes.string.isRequired, // name should be a string
+	price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired, // price can be a number or a string
 };
 
 export default ProductItem;

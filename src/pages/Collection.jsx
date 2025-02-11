@@ -105,14 +105,14 @@ const Collection = () => {
 
 			{/* Right Side */}
 			<div className="flex-1">
-				<div className="flex justify-between text-base sm:text-2xl mb-4">
+				<div className="flex justify-between text-base sm:text-2xl mb-4 flex-wrap">
 					<Title
 						text1={"ALL"}
 						text2={"COLLECTIONS"}
 					></Title>
 
 					{/* Product Sort */}
-					<select className="border-2 border-gray-300 text-sm px-2">
+					<select className="border-2 ml-6 border-gray-300 text-sm px-2 h-[40px]">
 						<option value="relevant">Sort by : Relavent</option>
 						<option value="low-high">Sort by : Low to High</option>
 						<option value="high-low">Sort by : High to Low</option>
@@ -122,15 +122,35 @@ const Collection = () => {
 				{/* Mapping products */}
 
 				<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6">
-					{filterProducts.map((item, index) => (
-						<ProductItem
-							key={index}
-							id={item._id}
-							image={item.image}
-							name={item.name}
-							price={item.price}
-						/>
-					))}
+					{Array.isArray(filterProducts) &&
+						filterProducts.map((item, index) =>
+							item && item._id ? (
+								<ProductItem
+									key={index}
+									id={item._id}
+									image={item.image}
+									name={item.name}
+									price={item.price}
+								/>
+							) : null
+						)}
+
+					{/* 
+						had to make it an array, otherwise it was showing 53 items : 
+  filterProducts.map((item, index) => (
+    item && item._id ? (
+      <ProductItem
+        key={index}
+        id={item._id}
+        image={item.image}
+        name={item.name}
+        price={item.price}
+      />
+    ) 
+  ))
+}
+
+						*/}
 				</div>
 			</div>
 		</div>
